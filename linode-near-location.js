@@ -9,23 +9,25 @@
   }
 }(this, function () {
 
+    function stdTimezoneOffset(date) {
+        var jan = new Date(date.getFullYear(), 0, 1);
+        var jul = new Date(date.getFullYear(), 6, 1);
+        return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+    }
+
+    function dst(date) {
+        return date.getTimezoneOffset() < stdTimezoneOffset(date);
+    }
+
     return function linodeNearLocation() {
         // Add Daylight Savings Time detection, all most all dst countries are northern hemisphere
         // http://javascript.about.com/library/bldst.htm
-        Date.prototype.stdTimezoneOffset = function() {
-            var jan = new Date(this.getFullYear(), 0, 1);
-            var jul = new Date(this.getFullYear(), 6, 1);
-            return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-        };
-        Date.prototype.dst = function() {
-            return this.getTimezoneOffset() < this.stdTimezoneOffset();
-        };
 
         var today = new Date();
         var timezoneOffset = today.getTimezoneOffset() / 60;
         var linode_location;
 
-        if (today.dst()) {
+        if (dst(today)) {
             timezoneOffset++;  // add one if we are currently in daylight savings time
         }
 
