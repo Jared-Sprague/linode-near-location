@@ -1,0 +1,22 @@
+{
+  "name": "linode-near-location",
+  "main": "linode-near-location.js",
+  "homepage": "https://github.com/Jared-Sprague/linode-near-location",
+  "authors": [
+    "Jared Sprague <jared@caramelcode.com>"
+  ],
+  "description": "A simple javascript function that returns the nearest Linode location based on the clients timezone",
+  "keywords": [
+    "linode",
+    "timezone",
+    "location"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
