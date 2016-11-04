@@ -41,9 +41,9 @@
             case -10:
             case -9:
             case -8:
+            case -7:
                 linode_location = 'fremont';
                 break;
-            case -7:
             case -6:
                 linode_location = 'dallas';
                 break;
